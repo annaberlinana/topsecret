@@ -2,34 +2,29 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
     <title>Annas 12. Geburtstag - Mission: Ausbruch!</title>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Open+Sans:wght@400;600&display=swap');
 
+        /* Behebt das Breiten-Problem auf schmalen Handys (Sony Xperia etc.) */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Open Sans', sans-serif;
-            /* Neuer, 100% verlässlicher Gefängnis-Hintergrund ohne externe Bilder */
-            background-color: #1a1a1a;
-            background-image: repeating-linear-gradient(
-                90deg,
-                rgba(0, 0, 0, 0.8) 0px,
-                rgba(0, 0, 0, 0.8) 20px,
-                transparent 20px,
-                transparent 120px
-            ),
-            repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.5) 0px,
-                rgba(0, 0, 0, 0.5) 10px,
-                transparent 10px,
-                transparent 200px
-            );
+            background-color: #000;
+            /* Echtes Gefängnis (Alcatraz) mit dunklem, dramatischem Filter */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Alcatraz_cell_block.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #e0e0e0;
             margin: 0;
-            padding: 20px;
+            padding: 15px; /* Etwas weniger Padding für kleine Bildschirme */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,22 +32,24 @@
         }
 
         #login-screen {
-            background-color: #2c2c2c;
+            background-color: rgba(44, 44, 44, 0.95);
             border: 2px solid #ff6600;
             border-radius: 8px;
-            padding: 40px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(255, 102, 0, 0.3);
-            max-width: 400px;
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.4);
             width: 100%;
+            max-width: 400px;
             z-index: 10;
         }
 
         #login-screen h1 {
-            font-size: 2em;
+            /* Dynamische Schriftgröße für Handys */
+            font-size: clamp(1.8em, 5vw, 2.5em);
             margin-bottom: 20px;
             border: none;
             padding-bottom: 0;
+            color: #ff3333;
         }
 
         #login-screen input[type="password"] {
@@ -72,19 +69,19 @@
             display: none;
             width: 100%;
             max-width: 650px;
-            background-color: rgba(44, 44, 44, 0.98);
+            background-color: rgba(30, 30, 30, 0.95);
             border: 2px solid #ff6600;
             border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-            margin: 20px auto;
+            padding: 25px; /* Angepasst für Mobilgeräte */
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            margin: 10px auto;
         }
 
         h1 {
             font-family: 'Special Elite', cursive;
             color: #ff6600;
             text-align: center;
-            font-size: 2.5em;
+            font-size: clamp(1.8em, 6vw, 2.5em); /* Passt sich dem Bildschirm an */
             margin-top: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -95,14 +92,17 @@
         h2 {
             font-family: 'Special Elite', cursive;
             color: #fff;
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-top: 30px;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
         }
 
         a {
             color: #ff6600;
             text-decoration: none;
             font-weight: bold;
+            word-break: break-word; /* Verhindert, dass Links das Layout sprengen */
         }
         
         a:hover {
@@ -110,11 +110,11 @@
         }
 
         .akte {
-            background-color: rgba(30, 30, 30, 0.9);
+            background-color: rgba(20, 20, 20, 0.8);
             padding: 20px;
             border-left: 5px solid #ff6600;
             margin-bottom: 25px;
-            font-size: 1.05em;
+            font-size: 1em;
             line-height: 1.6;
         }
 
@@ -122,16 +122,44 @@
             color: #ff6600;
         }
 
+        /* Die rote Deadline-Box */
+        .deadline-box {
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 2px dashed #ff3333;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .deadline-box strong {
+            color: #ff3333;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .deadline-date {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 51, 51, 0.8);
+        }
+
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            width: 100%;
         }
 
         label {
             font-weight: 600;
             margin-bottom: 5px;
             display: block;
+            font-size: 0.95em;
         }
 
         input[type="text"],
@@ -139,13 +167,13 @@
         input[type="password"],
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #555;
             background-color: #1a1a1a;
             color: #fff;
             border-radius: 4px;
-            box-sizing: border-box;
             font-family: 'Open Sans', sans-serif;
+            font-size: 1em;
         }
 
         .checkbox-group {
@@ -157,8 +185,8 @@
 
         .checkbox-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+            align-items: flex-start; /* Oben ausrichten bei mehrzeiligem Text */
+            margin-bottom: 15px;
         }
 
         .checkbox-item:last-child {
@@ -166,9 +194,17 @@
         }
 
         .checkbox-item input[type="checkbox"] {
-            margin-right: 10px;
-            transform: scale(1.2);
+            margin-top: 4px; /* Optische Anpassung an den Text */
+            margin-right: 12px;
+            transform: scale(1.3);
             accent-color: #ff6600;
+            flex-shrink: 0; /* Verhindert, dass die Checkbox auf Handys gequetscht wird */
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            line-height: 1.4;
+            font-weight: 400;
         }
 
         button {
@@ -185,6 +221,7 @@
             transition: background-color 0.3s ease;
             margin-top: 10px;
             width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
         button:hover {
@@ -194,7 +231,7 @@
         .footer {
             text-align: center;
             margin-top: 30px;
-            font-size: 0.8em;
+            font-size: 0.85em;
             color: #888;
         }
     </style>
@@ -226,6 +263,12 @@
         </ul>
     </div>
 
+    <div class="deadline-box">
+        <strong>⚠️ ACHTUNG: MISSIONSLIMIT ⚠️</strong>
+        Rückmeldung zwingend erforderlich bis zum:<br>
+        <span class="deadline-date">08.03.2026</span>
+    </div>
+
     <h2>Rückmeldung & Terminwahl</h2>
     <p>Bitte gebt in der Akte an, an welchen Tagen ihr einsatzbereit wärt (Mehrfachnennung ist erwünscht!).</p>
 
@@ -235,6 +278,8 @@
         <input type="hidden" name="subject" value="Neuer Termin-Vote: Annas Geburtstag">
         <input type="hidden" name="redirect" value="https://web3forms.com/success">
         <input type="hidden" name="from_name" value="Anna (Geheimkommando)">
+        
+        <input type="hidden" name="replyto" value="anna.v.rothenburg@gmail.com">
         
         <input type="hidden" name="autoresponse" value="Mission bestätigt! Deine Geheimakte und dein Vote sind sicher bei Anna eingegangen. Mach dich bereit für den Ausbruch!">
 
@@ -290,13 +335,13 @@
 <script>
     function checkPassword() {
         var pwd = document.getElementById("password-input").value;
-        if(pwd === "Knast2026") {
+        // Akzeptiert auch kleingeschriebene Varianten
+        if(pwd.toLowerCase() === "knast2026") {
             document.getElementById("login-screen").style.display = "none";
             document.getElementById("main-content").style.display = "block";
             window.scrollTo(0, 0);
-            document.body.style.display = "block"; 
             
-            // Setzt den Hintergrund auf normal Scroll-fähig, wenn eingeloggt
+            // Layout normalisieren
             document.body.style.display = "block";
             document.body.style.minHeight = "auto";
         } else {
