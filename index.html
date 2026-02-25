@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Annas 12. Geburtstag - Mission: Ausbruch!</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Open+Sans:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            /* Neuer, 100% verlässlicher Gefängnis-Hintergrund ohne externe Bilder */
+            background-color: #1a1a1a;
+            background-image: repeating-linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.8) 0px,
+                rgba(0, 0, 0, 0.8) 20px,
+                transparent 20px,
+                transparent 120px
+            ),
+            repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.5) 0px,
+                rgba(0, 0, 0, 0.5) 10px,
+                transparent 10px,
+                transparent 200px
+            );
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #login-screen {
+            background-color: #2c2c2c;
+            border: 2px solid #ff6600;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 102, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        #login-screen h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            border: none;
+            padding-bottom: 0;
+        }
+
+        #login-screen input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            border: 1px solid #555;
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        #main-content {
+            display: none;
+            width: 100%;
+            max-width: 650px;
+            background-color: rgba(44, 44, 44, 0.98);
+            border: 2px solid #ff6600;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-family: 'Special Elite', cursive;
+            color: #ff6600;
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px dashed #ff6600;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-family: 'Special Elite', cursive;
+            color: #fff;
+            font-size: 1.5em;
+            margin-top: 30px;
+        }
+
+        a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .akte {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            border-left: 5px solid #ff6600;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .akte strong {
+            color: #ff6600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .checkbox-group {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #555;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: #ff6600;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: #1a1a1a;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div id="login-screen">
+    <h1>HALT!</h1>
+    <p>Diese Akte ist streng vertraulich. <br>Bitte gib den geheimen Zugangscode ein:</p>
+    <input type="password" id="password-input" placeholder="Zugangscode..." onkeydown="if(event.key === 'Enter'){ checkPassword(); }">
+    <button onclick="checkPassword()">Akte öffnen</button>
+    <p id="error-msg" style="color: #ff3333; font-weight: bold; display: none; margin-top: 15px;">Zugriff verweigert! Code inkorrekt.</p>
+</div>
+
+<div id="main-content">
+    <h1>Mission: Ausbruch!<br>Ich werde 12!</h1>
+
+    <div class="akte">
+        <p><strong>NACHRICHT VON: ANNA // STRENG VERTRAULICH</strong></p>
+        <p>Hallo meine liebsten Komplizinnen!</p>
+        <p>Ich feiere meinen 12. Geburtstag und brauche euer Geschick für einen streng geheimen Plan: Wir brechen gemeinsam aus dem <a href="https://www.escape-berlin.de/de/live/23-knast/" target="_blank">Escape Room "Knast"</a> aus! Da mein echter Geburtstag (31.03.2026) mitten in den Osterferien liegt, suchen wir hiermit das beste Datum für unsere Flucht.</p>
+        
+        <p><strong>UNSER EINSATZPLAN:</strong></p>
+        <ul>
+            <li><strong>Treffpunkt:</strong> Start ist um 13:30 Uhr. Die genauen Koordinaten und den Ort teile ich euch noch heimlich mit.</li>
+            <li><strong>Die Mission:</strong> Gemeinsam mit meinem Papa wagen wir den Ausbruch aus dem Gefängnis.</li>
+            <li><strong>Das Versteck:</strong> Danach flüchten wir in mein absolut sicheres Versteck (auch diese Adresse folgt später). Hier feiern wir unseren erfolgreichen Ausbruch weiter, schauen einen Film und wer möchte, taucht über Nacht bei mir unter.</li>
+            <li><strong>Exfiltration:</strong> Am nächsten Morgen nach dem Frühstück könnt ihr um 11:00 Uhr wieder am geheimen Treffpunkt abgeholt werden.</li>
+        </ul>
+    </div>
+
+    <h2>Rückmeldung & Terminwahl</h2>
+    <p>Bitte gebt in der Akte an, an welchen Tagen ihr einsatzbereit wärt (Mehrfachnennung ist erwünscht!).</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+        
+        <input type="hidden" name="access_key" value="4999ac44-fd17-4f18-8e6b-c83431b54900">
+        <input type="hidden" name="subject" value="Neuer Termin-Vote: Annas Geburtstag">
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+        <input type="hidden" name="from_name" value="Anna (Geheimkommando)">
+        
+        <input type="hidden" name="autoresponse" value="Mission bestätigt! Deine Geheimakte und dein Vote sind sicher bei Anna eingegangen. Mach dich bereit für den Ausbruch!">
+
+        <div>
+            <label for="child_name">Wie lautet dein Deckname?</label>
+            <input type="text" id="child_name" name="Komplizin" required placeholder="Deckname">
+        </div>
+
+        <div>
+            <label for="email">Sichere E-Mail-Adresse für die Bestätigung:</label>
+            <input type="email" id="email" name="email" required placeholder="knasti@ausbruch.de">
+        </div>
+
+        <label>An diesen Terminen bin ich einsatzbereit:</label>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="date1" name="Termine[]" value="Dienstag, 31.03.2026 (Annas echter Geburtstag)">
+                <label for="date1">Dienstag, 31.03.2026 (Annas echter Geburtstag)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="date2" name="Termine[]" value="Samstag, 04.04.2026">
+                <label for="date2">Samstag, 04.04.2026</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="date3" name="Termine[]" value="Samstag, 11.04.2026">
+                <label for="date3">Samstag, 11.04.2026</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="date4" name="Termine[]" value="Samstag, 18.04.2026">
+                <label for="date4">Samstag, 18.04.2026</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="date_none" name="Termine[]" value="Keiner dieser Termine passt">
+                <label for="date_none">Leider ist an keinem Termin ein Ausbruch möglich :(</label>
+            </div>
+        </div>
+
+        <div>
+            <label for="notes">Sondervermerke (Allergien, Besonderheiten beim Essen, oder falls das Untertauchen/Übernachten nicht klappt):</label>
+            <textarea id="notes" name="Anmerkungen" rows="4" placeholder="Hier ist Platz für wichtige Geheim-Infos..."></textarea>
+        </div>
+
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <button type="submit">Akte übermitteln & Abstimmen</button>
+    </form>
+
+    <div class="footer">
+        Ich freue mich riesig auf unsere unvergessliche Mission!<br>Eure Anna
+    </div>
+</div>
+
+<script>
+    function checkPassword() {
+        var pwd = document.getElementById("password-input").value;
+        if(pwd === "Knast2026") {
+            document.getElementById("login-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+            window.scrollTo(0, 0);
+            document.body.style.display = "block"; 
+            
+            // Setzt den Hintergrund auf normal Scroll-fähig, wenn eingeloggt
+            document.body.style.display = "block";
+            document.body.style.minHeight = "auto";
+        } else {
+            document.getElementById("error-msg").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
