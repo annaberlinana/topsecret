@@ -275,25 +275,25 @@
 
     <div class="akte">
         <p><strong>NACHRICHT VON: ANNA // STRENG VERTRAULICH</strong></p>
-        <p>Hallo meine liebsten Komplizinnen!</p>
-        <p>Ich feiere meinen 12. Geburtstag und brauche euer Geschick für einen streng geheimen Plan: Wir brechen gemeinsam aus dem <a href="https://www.escape-berlin.de/de/live/23-knast/" target="_blank">Escape Room "Knast"</a> aus! Da mein echter Geburtstag (31.03.2026) mitten in den Osterferien liegt, suchen wir hiermit das beste Datum für unsere Flucht.</p>
+        <p>Hallo Komplizinnen!</p>
+        <p>Ich feiere meinen 12. Geburtstag und brauche euer Geschick für einen streng geheimen Plan: Wir brechen gemeinsam aus dem <a href="https://www.escape-berlin.de/de/live/23-knast/" target="_blank">Knast</a> aus! Da mein Geburtstag (31.03.2026) mitten in den Ferien liegt, suchen wir hiermit das beste Datum für unsere Flucht.</p>
         
         <p><strong>UNSER EINSATZPLAN:</strong></p>
         <ul>
-            <li><strong>Treffpunkt:</strong> Start ist um 13:30 Uhr. Die genauen Koordinaten und den Ort teile ich euch noch heimlich mit.</li>
-            <li><strong>Die Mission:</strong> Gemeinsam mit meinem Papa wagen wir den Ausbruch aus dem Gefängnis.</li>
+            <li><strong>Treffpunkt:</strong> Start ist um 13:30 Uhr am abgestimmten Datum. Dies und die genauen Koordinaten des Ortes, an dem wir uns treffen, teile ich euch nach Eingang eurer Rückmeldungen gesondert mit.</li>
+            <li><strong>Die Mission:</strong> Gemeinsam mit meinem Papa ("Alter Hase") wagen wir den Ausbruch aus dem <a href="https://www.escape-berlin.de/de/live/23-knast/" target="_blank">Knast</a>.</li>
             <li><strong>Das Versteck:</strong> Danach flüchten wir in mein absolut sicheres Versteck (auch diese Adresse folgt später). Hier feiern wir unseren erfolgreichen Ausbruch weiter, schauen einen Film und wer möchte, taucht über Nacht bei mir unter.</li>
-            <li><strong>Exfiltration:</strong> Am nächsten Morgen nach dem Frühstück könnt ihr um 11:00 Uhr wieder am geheimen Treffpunkt abgeholt werden.</li>
+            <li><strong>Rückzug:</strong> Am nächsten Morgen nach dem Frühstück könnt ihr um 11:00 Uhr wieder am geheimen Treffpunkt abgeholt werden.</li>
         </ul>
     </div>
 
     <div class="deadline-box">
-        <strong>⚠️ ACHTUNG: MISSIONSLIMIT ⚠️</strong>
+        <strong>⚠️ ACHTUNG: DEADLINE ⚠️</strong>
         Rückmeldung zwingend erforderlich bis zum:<br>
         <span class="deadline-date">08.03.2026</span>
     </div>
 
-    <h2>Rückmeldung & Terminwahl</h2>
+    <h2>Deine Rückmeldung</h2>
     <p>Bitte gebt in der Akte an, an welchen Tagen ihr einsatzbereit wärt (Mehrfachnennung ist erwünscht!).</p>
 
     <form action="https://api.web3forms.com/submit" method="POST">
@@ -308,11 +308,11 @@
 
         <div>
             <label for="child_name">Wie lautet dein Deckname?</label>
-            <input type="text" id="child_name" name="Komplizin" required placeholder="Deckname">
+            <input type="text" id="child_name" name="Komplizin" required placeholder="Deckname (aber so, dass ich erkenne, um wen es sich handelt!!)">
         </div>
 
         <div>
-            <label for="email">E-Mail-Adresse für eine Bestätigung (optional):</label>
+            <label for="email">E-Mail-Adresse für die Bestätigung (optional):</label>
             <input type="email" id="email" name="email" placeholder="knasti@ausbruch.de">
         </div>
 
@@ -320,7 +320,7 @@
         <div class="checkbox-group">
             <div class="checkbox-item">
                 <input type="checkbox" id="date1" class="date-cb" name="Termine[]" value="Dienstag, 31.03.2026 (Annas echter Geburtstag)">
-                <label for="date1">Dienstag, 31.03.2026 (Annas echter Geburtstag)</label>
+                <label for="date1">Dienstag, 31.03.2026 (Annas Geburtstag)</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="date2" class="date-cb" name="Termine[]" value="Samstag, 04.04.2026">
@@ -341,7 +341,7 @@
         </div>
 
         <div>
-            <label for="notes">Sondervermerke (Allergien, Besonderheiten beim Essen, oder falls das Untertauchen/Übernachten nicht klappt):</label>
+            <label for="notes">Sondervermerke (z.B. wenn das Untertauchen/Übernachten bei dir leider nicht klappt):</label>
             <textarea id="notes" name="Anmerkungen" rows="4" placeholder="Hier ist Platz für wichtige Geheim-Infos..."></textarea>
         </div>
 
@@ -361,7 +361,7 @@
         // Holt das Passwort und entfernt Leerzeichen aus Versehen
         var pwd = document.getElementById("password-input").value.trim();
         
-        if(pwd.toLowerCase() === "knast2026") {
+        if(pwd.toLowerCase() === "sirius31") {
             // Versteckt das Login-Fenster
             document.getElementById("login-screen").style.display = "none";
             // Zeigt den Inhalt
