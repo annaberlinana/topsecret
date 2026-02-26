@@ -7,9 +7,9 @@
     <title>Annas 12. Geburtstag - Mission: Ausbruch!</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Open+Sans:wght@400;600&display=swap');
+        /* Wir laden 3 Schriften: Special Elite (Schreibmaschine), Open Sans (Text), Caveat (Handschrift) */
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Special+Elite&family=Open+Sans:wght@400;600&display=swap');
 
-        /* Behebt das Breiten-Problem auf schmalen Handys (Sony Xperia etc.) */
         * {
             box-sizing: border-box;
         }
@@ -17,14 +17,14 @@
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: #000;
-            /* Echtes Gefängnis (Alcatraz) mit dunklem, dramatischem Filter */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Alcatraz_cell_block.jpg');
+            /* Sehr verlässliches Bild von Gefängnisgittern mit starker Abdunklung für Lesbarkeit */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1584950343355-66708a3a0e63?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #e0e0e0;
             margin: 0;
-            padding: 15px; /* Etwas weniger Padding für kleine Bildschirme */
+            padding: 15px; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,7 +44,7 @@
         }
 
         #login-screen h1 {
-            /* Dynamische Schriftgröße für Handys */
+            font-family: 'Special Elite', cursive;
             font-size: clamp(1.8em, 5vw, 2.5em);
             margin-bottom: 20px;
             border: none;
@@ -72,7 +72,7 @@
             background-color: rgba(30, 30, 30, 0.95);
             border: 2px solid #ff6600;
             border-radius: 8px;
-            padding: 25px; /* Angepasst für Mobilgeräte */
+            padding: 25px; 
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
             margin: 10px auto;
         }
@@ -81,7 +81,7 @@
             font-family: 'Special Elite', cursive;
             color: #ff6600;
             text-align: center;
-            font-size: clamp(1.8em, 6vw, 2.5em); /* Passt sich dem Bildschirm an */
+            font-size: clamp(1.8em, 6vw, 2.5em); 
             margin-top: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -102,7 +102,7 @@
             color: #ff6600;
             text-decoration: none;
             font-weight: bold;
-            word-break: break-word; /* Verhindert, dass Links das Layout sprengen */
+            word-break: break-word; 
         }
         
         a:hover {
@@ -122,14 +122,33 @@
             color: #ff6600;
         }
 
-        /* Die rote Deadline-Box */
+        /* DIE WANDERNDEN STRICHE (Marching Ants Animation) */
         .deadline-box {
             background-color: rgba(255, 0, 0, 0.1);
-            border: 2px dashed #ff3333;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
-            margin: 20px 0;
-            border-radius: 4px;
+            margin: 25px 0;
+            position: relative;
+            
+            /* Erzeugt den Rahmen für die Animation */
+            background-image: 
+                linear-gradient(90deg, #ff3333 50%, transparent 50%), 
+                linear-gradient(90deg, #ff3333 50%, transparent 50%), 
+                linear-gradient(0deg, #ff3333 50%, transparent 50%), 
+                linear-gradient(0deg, #ff3333 50%, transparent 50%);
+            background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+            background-size: 20px 3px, 20px 3px, 3px 20px, 3px 20px;
+            background-position: left top, right bottom, left bottom, right top;
+            animation: border-dance 1s infinite linear;
+        }
+
+        @keyframes border-dance {
+            0% {
+                background-position: left top, right bottom, left bottom, right top;
+            }
+            100% {
+                background-position: left 20px top, right 20px bottom, left bottom 20px, right top 20px;
+            }
         }
 
         .deadline-box strong {
@@ -185,7 +204,7 @@
 
         .checkbox-item {
             display: flex;
-            align-items: flex-start; /* Oben ausrichten bei mehrzeiligem Text */
+            align-items: flex-start; 
             margin-bottom: 15px;
         }
 
@@ -194,17 +213,18 @@
         }
 
         .checkbox-item input[type="checkbox"] {
-            margin-top: 4px; /* Optische Anpassung an den Text */
+            margin-top: 4px; 
             margin-right: 12px;
             transform: scale(1.3);
             accent-color: #ff6600;
-            flex-shrink: 0; /* Verhindert, dass die Checkbox auf Handys gequetscht wird */
+            flex-shrink: 0; 
         }
 
         .checkbox-item label {
             margin-bottom: 0;
             line-height: 1.4;
             font-weight: 400;
+            cursor: pointer;
         }
 
         button {
@@ -228,11 +248,16 @@
             background-color: #e65c00;
         }
 
-        .footer {
+        /* Der neue Schlussgruß (Anna) */
+        .footer-greeting {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.85em;
-            color: #888;
+            margin-top: 40px;
+            font-family: 'Caveat', cursive; /* Handschrift-Font */
+            font-size: 2.2em;
+            color: #ffffff; /* Heller als vorher */
+            line-height: 1.2;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            transform: rotate(-2deg); /* Leicht schräg wie handgeschrieben */
         }
     </style>
 </head>
@@ -280,7 +305,6 @@
         <input type="hidden" name="from_name" value="Anna (Geheimkommando)">
         
         <input type="hidden" name="replyto" value="anna.v.rothenburg@gmail.com">
-        
         <input type="hidden" name="autoresponse" value="Mission bestätigt! Deine Geheimakte und dein Vote sind sicher bei Anna eingegangen. Mach dich bereit für den Ausbruch!">
 
         <div>
@@ -289,29 +313,29 @@
         </div>
 
         <div>
-            <label for="email">Sichere E-Mail-Adresse für die Bestätigung:</label>
-            <input type="email" id="email" name="email" required placeholder="knasti@ausbruch.de">
+            <label for="email">E-Mail-Adresse für eine Bestätigung (optional):</label>
+            <input type="email" id="email" name="email" placeholder="knasti@ausbruch.de">
         </div>
 
         <label>An diesen Terminen bin ich einsatzbereit:</label>
         <div class="checkbox-group">
             <div class="checkbox-item">
-                <input type="checkbox" id="date1" name="Termine[]" value="Dienstag, 31.03.2026 (Annas echter Geburtstag)">
+                <input type="checkbox" id="date1" class="date-cb" name="Termine[]" value="Dienstag, 31.03.2026 (Annas echter Geburtstag)">
                 <label for="date1">Dienstag, 31.03.2026 (Annas echter Geburtstag)</label>
             </div>
             <div class="checkbox-item">
-                <input type="checkbox" id="date2" name="Termine[]" value="Samstag, 04.04.2026">
+                <input type="checkbox" id="date2" class="date-cb" name="Termine[]" value="Samstag, 04.04.2026">
                 <label for="date2">Samstag, 04.04.2026</label>
             </div>
             <div class="checkbox-item">
-                <input type="checkbox" id="date3" name="Termine[]" value="Samstag, 11.04.2026">
+                <input type="checkbox" id="date3" class="date-cb" name="Termine[]" value="Samstag, 11.04.2026">
                 <label for="date3">Samstag, 11.04.2026</label>
             </div>
             <div class="checkbox-item">
-                <input type="checkbox" id="date4" name="Termine[]" value="Samstag, 18.04.2026">
+                <input type="checkbox" id="date4" class="date-cb" name="Termine[]" value="Samstag, 18.04.2026">
                 <label for="date4">Samstag, 18.04.2026</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item" style="border-top: 1px dashed #555; padding-top: 15px; margin-top: 5px;">
                 <input type="checkbox" id="date_none" name="Termine[]" value="Keiner dieser Termine passt">
                 <label for="date_none">Leider ist an keinem Termin ein Ausbruch möglich :(</label>
             </div>
@@ -327,27 +351,49 @@
         <button type="submit">Akte übermitteln & Abstimmen</button>
     </form>
 
-    <div class="footer">
+    <div class="footer-greeting">
         Ich freue mich riesig auf unsere unvergessliche Mission!<br>Eure Anna
     </div>
 </div>
 
 <script>
+    // --- Logik für den Passwort-Schutz ---
     function checkPassword() {
         var pwd = document.getElementById("password-input").value;
-        // Akzeptiert auch kleingeschriebene Varianten
         if(pwd.toLowerCase() === "knast2026") {
             document.getElementById("login-screen").style.display = "none";
             document.getElementById("main-content").style.display = "block";
             window.scrollTo(0, 0);
-            
-            // Layout normalisieren
             document.body.style.display = "block";
             document.body.style.minHeight = "auto";
         } else {
             document.getElementById("error-msg").style.display = "block";
         }
     }
+
+    // --- Logik für die Checkboxen (Gegenseitiger Ausschluss) ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateCheckboxes = document.querySelectorAll('.date-cb');
+        const noneCheckbox = document.getElementById('date_none');
+
+        // Wenn "Keiner passt" angeklickt wird
+        noneCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Alle Daten-Häkchen entfernen
+                dateCheckboxes.forEach(cb => cb.checked = false);
+            }
+        });
+
+        // Wenn ein konkretes Datum angeklickt wird
+        dateCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                if (this.checked) {
+                    // Das Häkchen bei "Keiner passt" entfernen
+                    noneCheckbox.checked = false;
+                }
+            });
+        });
+    });
 </script>
 
 </body>
